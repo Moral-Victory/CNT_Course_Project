@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2P Encrypted Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔒 P2P Encrypted Chat</h1>
+      <div class="connection-status">
+        <span id="status" class="status disconnected">Disconnected</span>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="user-info">
+          <input type="text" id="username" placeholder="Enter your name" />
+          <button id="set-username">Set Name</button>
+        </div>
+
+        <div class="section">
+          <h3>Online Users (<span id="user-count">0</span>)</h3>
+          <ul id="user-list"></ul>
+        </div>
+
+        <div class="section">
+          <h3>Active Connections</h3>
+          <ul id="peer-list"></ul>
+        </div>
+      </aside>
+
+      <!-- Chat Area -->
+      <main class="chat-area">
+        <div class="chat-header">
+          <h2>Chat</h2>
+          <div class="encryption-indicator">
+            <span class="lock-icon">🔒</span>
+            <span>End-to-End Encrypted (DTLS)</span>
+          </div>
+        </div>
+        
+        <div id="messages" class="messages"></div>
+        
+        <div class="input-area">
+          <input 
+            type="text" 
+            id="message-input" 
+            placeholder="Type a message... (Connect to a peer first)"
+            disabled
+          />
+          <button id="send-btn" disabled>Send</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Include socket.io client -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Include simple-peer -->
+  <script src="https://unpkg.com/simple-peer@9.11.1/simplepeer.min.js"></script>
+  <!-- Include our app logic -->
+  <script src="app.js"></script>
+</body>
+</html>
